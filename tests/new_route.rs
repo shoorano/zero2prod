@@ -16,7 +16,7 @@ fn spawn_app() -> String {
 }
 
 #[tokio::test]
-async fn health_check_works() {
+async fn new_route_works() {
     // Arrange
     let address = spawn_app();
     // We need to bring in `reqwest`
@@ -25,7 +25,7 @@ async fn health_check_works() {
 
     // Act
     let response = client
-        .get(format!("{}/health_check", address))
+        .get(format!("{}/new_route", address))
         .send()
         .await
         .expect("Failed to execute request.");
