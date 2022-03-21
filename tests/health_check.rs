@@ -1,3 +1,5 @@
+use zero2prod::startup::run;
+
 use std::net::TcpListener;
 
 /// Launch our application in the background
@@ -7,7 +9,7 @@ fn spawn_app() -> String {
 
     // retrieve the port assigned by the OS
     let port = listener.local_addr().unwrap().port();
-    let server = zero2prod::run(listener).expect("Failed to bind address");
+    let server = run(listener).expect("Failed to bind address");
     // Launch the server as a background task
     // tokio::spawn returns a handle to the spawned future,
     // but we have no use for it here, hence the non-binding let
