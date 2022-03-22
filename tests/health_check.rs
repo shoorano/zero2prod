@@ -50,7 +50,7 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
     let connection_string = configuration.database.connection_string();
     // The `Connection` trait MUST be in scope for us to invoke
     // `PgConnection::connect` = it is not an inherent method of the struct.
-    let connection = PgConnection::connect(&connection_string)
+    let _connection = PgConnection::connect(&connection_string)
         .await
         .expect("Failed to connect to Postgres.");
     let client = reqwest::Client::new();
