@@ -7,7 +7,7 @@ if ! [ -x "$(command -v psql)" ]; then
   exit 1
 fi
 
-if ! [ -x "$(command -v sqlx)" ]; then
+if ! [ -x "$(command -v sqlx )" ]; then
   echo >&2 "Error: sqlx is not installed."
   echo >&2 "Use:"
   echo >&2 "    cargo install --version=0.5.5 sqlx-cli --no-default-features --features postgres"
@@ -58,6 +58,5 @@ done
 
 export DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}
 sqlx database create
-sqlx migrate run
 
 >&2 echo "Postgres has been migrated, ready to go!"
