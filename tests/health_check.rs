@@ -20,6 +20,7 @@ async fn spawn_app() -> TestApp {
 
     let mut configuration = get_configuration().expect("Failed to read in configuration");
     configuration.database.database_name = Uuid::new_v4().to_string();
+    println!("{}", configuration.database.database_name);
     let connection_pool = configure_database(&configuration.database).await;
 
     let server = run(listener, connection_pool.clone()).expect("Failed to bind to address");
